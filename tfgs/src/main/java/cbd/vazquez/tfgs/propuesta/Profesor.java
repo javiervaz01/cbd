@@ -25,4 +25,12 @@ public class Profesor {
     private String telefono;
 
     private DEPARTAMENTO departamento;
+
+    public Profesor(String nombre, String apellidos, String email, String telefono, DEPARTAMENTO departamento) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.telefono = telefono;
+        this.departamento = departamento;
+    }
 }

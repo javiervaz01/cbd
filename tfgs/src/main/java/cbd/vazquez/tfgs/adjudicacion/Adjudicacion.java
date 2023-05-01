@@ -1,6 +1,7 @@
 package cbd.vazquez.tfgs.adjudicacion;
 
 import cbd.vazquez.tfgs.propuesta.Alumno;
+import cbd.vazquez.tfgs.propuesta.Profesor;
 import cbd.vazquez.tfgs.propuesta.Propuesta;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,18 @@ public class Adjudicacion {
 
     @DocumentReference(collection = "alumnos")
     private Alumno alumno;
+
+    @DocumentReference(collection = "profesores")
+    private Profesor profesor;
+
+    private String estado;
+
+    public Adjudicacion(Propuesta propuesta, Alumno alumno, Profesor profesor, String estado) {
+        this.propuesta = propuesta;
+        this.alumno = alumno;
+        this.profesor = profesor;
+        this.estado = estado;
+    }
 
 
 

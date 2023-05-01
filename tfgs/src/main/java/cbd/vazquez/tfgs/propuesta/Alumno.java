@@ -28,4 +28,13 @@ public class Alumno {
 
     private String titulacion;
 
+    public Alumno(String nombre, String apellidos, String email, String telefono, String dni, String titulacion) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.telefono = telefono;
+        this.dni = dni;
+        this.titulacion = titulacion;
+    }
+
 }

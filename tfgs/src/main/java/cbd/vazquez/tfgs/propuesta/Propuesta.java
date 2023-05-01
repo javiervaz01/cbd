@@ -29,7 +29,12 @@ public class Propuesta {
 
     private DEPARTAMENTO departamento;
 
-    private String estado;
+    public Propuesta(String titulo, String descripcion, Profesor profesor, DEPARTAMENTO departamento) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.profesor = profesor;
+        this.departamento = departamento;
+    }
 
 
 }
