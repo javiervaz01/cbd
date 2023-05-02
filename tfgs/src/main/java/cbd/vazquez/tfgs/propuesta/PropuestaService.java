@@ -1,5 +1,6 @@
 package cbd.vazquez.tfgs.propuesta;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class PropuestaService {
         return repository.findPropuestaByTitulo(titulo);
     }
 
-    public Optional<List<Propuesta>> getPropuestasByProfesor(Profesor profesor) {
+    public Optional<List<Propuesta>> getPropuestasByProfesor(ObjectId profesor) {
         return repository.findPropuestaByProfesor(profesor);
     }
 

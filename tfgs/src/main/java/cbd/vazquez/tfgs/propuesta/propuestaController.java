@@ -2,6 +2,7 @@ package cbd.vazquez.tfgs.propuesta;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,17 +27,17 @@ public class propuestaController {
         return service.getAllPropuestas();
     }
 
-    @GetMapping("/propuestas/{titulo}")
+    @GetMapping("/propuestas/titulo/{titulo}")
     public ResponseEntity<Optional<Propuesta>> getPropuestaByTitulo(@PathVariable String titulo) {
         return new ResponseEntity<Optional<Propuesta>>(service.getPropuestaByTitulo(titulo), HttpStatus.OK);
     }
 
-    @GetMapping("/propuestas/{profesor}")
-    public ResponseEntity<Optional<List<Propuesta>>> getPropuestasByProfesor(@PathVariable Profesor profesor) {
+    @GetMapping("/propuestas/profesor/{profesor}")
+    public ResponseEntity<Optional<List<Propuesta>>> getPropuestasByProfesor(@PathVariable ObjectId profesor) {
         return new ResponseEntity<Optional<List<Propuesta>>>(service.getPropuestasByProfesor(profesor), HttpStatus.OK);
     }
 
-    @GetMapping("/propuestas/{departamento}")
+    @GetMapping("/propuestas/departamento/{departamento}")
     public ResponseEntity<Optional<List<Propuesta>>> getPropuestasByDepartamento(@PathVariable DEPARTAMENTO departamento) {
         return new ResponseEntity<Optional<List<Propuesta>>>(service.getPropuestasByDepartamento(departamento), HttpStatus.OK);
     }
