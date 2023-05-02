@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -41,6 +38,30 @@ public class propuestaController {
     public ResponseEntity<Optional<List<Propuesta>>> getPropuestasByDepartamento(@PathVariable DEPARTAMENTO departamento) {
         return new ResponseEntity<Optional<List<Propuesta>>>(service.getPropuestasByDepartamento(departamento), HttpStatus.OK);
     }
+
+    @PostMapping("/propuestas")
+    public ResponseEntity<?> createPropuesta(@RequestBody Propuesta propuesta) {
+        service.createPropuesta(propuesta);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/propuestas/{id}")
+    public ResponseEntity<?> deletePropuesta(@PathVariable ObjectId id) {
+        service.deletePropuesta(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/propuestas/{id}")
+    public ResponseEntity<?> updatePropuesta(@PathVariable ObjectId id, @RequestBody Propuesta propuesta) {
+        service.updatePropuesta(id, propuesta);
+        return ResponseEntity.ok().build();
+    }
+
+
+
+
+
+
 
     @Autowired
     private MongoClient mongoClient;

@@ -28,4 +28,22 @@ public class PropuestaService {
     public Optional<List<Propuesta>> getPropuestasByDepartamento(DEPARTAMENTO departamento) {
         return repository.findPropuestaByDepartamento(departamento);
     }
+
+    public void createPropuesta(Propuesta propuesta) {
+        repository.save(propuesta);
+    }
+
+    public void deletePropuesta(ObjectId id) {
+        repository.deleteById(id);
+    }
+
+    public void updatePropuesta(ObjectId id, Propuesta propuesta) {
+        repository.findById(id).map(p -> {
+            p.setTitulo(propuesta.getTitulo());
+            p.setDescripcion(propuesta.getDescripcion());
+            p.setDepartamento(propuesta.getDepartamento());
+            p.setProfesor(propuesta.getProfesor());
+            return repository.save(p);
+        });
+    }
 }

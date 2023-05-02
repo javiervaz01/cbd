@@ -21,7 +21,7 @@ public class Adjudicacion {
     private ObjectId id;
 
     @DocumentReference(collection = "propuestas")
-    private ObjectId propuestaId;
+    private Propuesta propuesta;
 
     @DocumentReference(collection = "alumnos")
     private Alumno alumno;
@@ -31,8 +31,8 @@ public class Adjudicacion {
 
     private String estado;
 
-    public Adjudicacion(ObjectId propuestaId, Alumno alumno, Profesor profesor, String estado) {
-        this.propuestaId = propuestaId;
+    public Adjudicacion(Propuesta propuesta, Alumno alumno, Profesor profesor, String estado) {
+        this.propuesta = propuesta;
         this.alumno = alumno;
         this.profesor = profesor;
         this.estado = estado;
