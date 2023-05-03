@@ -37,12 +37,22 @@ public class PropuestaService {
         repository.deleteById(id);
     }
 
-    public void updatePropuesta(ObjectId id, Propuesta propuesta) {
+
+
+    public void updatePropuesta(ObjectId id, Propuesta propuesta){
         repository.findById(id).map(p -> {
-            p.setTitulo(propuesta.getTitulo());
-            p.setDescripcion(propuesta.getDescripcion());
-            p.setDepartamento(propuesta.getDepartamento());
-            p.setProfesor(propuesta.getProfesor());
+            if(propuesta.getTitulo() != null){
+                p.setTitulo(propuesta.getTitulo());
+            }
+            if(propuesta.getDescripcion() != null){
+                p.setDescripcion(propuesta.getDescripcion());
+            }
+            if(propuesta.getDepartamento() != null){
+                p.setDepartamento(propuesta.getDepartamento());
+            }
+            if(propuesta.getProfesor() != null){
+                p.setProfesor(propuesta.getProfesor());
+            }
             return repository.save(p);
         });
     }

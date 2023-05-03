@@ -23,12 +23,12 @@ public class ProfesorController {
         return repository.findById(id);
     }
 
-    @GetMapping("/profesores/{nombre}")
+    @GetMapping("/profesores/nombre/{nombre}")
     public Optional<Profesor> getProfesorByNombre(@PathVariable String nombre){
         return repository.findProfesorByNombre(nombre);
     }
 
-    @GetMapping("/profesores/{departamento}")
+    @GetMapping("/profesores/departamento/{departamento}")
     public Iterable<Profesor> getProfesorByDepartamento(@PathVariable DEPARTAMENTO departamento){
         return repository.findProfesorByDepartamento(departamento);
     }
