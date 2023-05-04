@@ -50,5 +50,8 @@ public class AdjudicacionService {
         return repository.findById(id).orElse(null);
     }
 
+    public Adjudicacion createAdjudicacion(Adjudicacion adjudicacion) {
+        return repository.save(adjudicacion);
+    }
 
 }

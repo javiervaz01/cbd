@@ -4,24 +4,33 @@ import Sidebar from "../components/Sidebar";
 import "./Styles.css";
 
 function Propuestas() {
-  const [propuestas, setPropuestas] = useState([]);
+    const [propuestas, setPropuestas] = useState([]);
 
-  
-    const propuestas3 = axios
-      .get("http://localhost:8080/propuestas")
-      .then((response) => setPropuestas(response.data))
-      .catch((error) => console.error(error));
-      debugger;
-  
+    useEffect(() => {
+      axios.get('http://localhost:8080/propuestas')
+        .then(response => {
+          setPropuestas(response.data);
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }, []);
 
   return (
     <div className="app">
-      <Sidebar />
+      <div className="right">
+                <div className="titulo">
+                    <h1>Propuestas</h1>
+                </div>
+                <Sidebar />
+
+                
+            </div>
 
       <div className="content">
-        <h1>Propuestas</h1>
-
-        <div className="propuestas">
+        
+        <div className="propuesta">
           {propuestas.map((propuesta) => (
             <PropuestaComponent key={propuesta.titulo} propuesta={propuesta} />
           ))}
@@ -34,10 +43,10 @@ function Propuestas() {
 function PropuestaComponent({ propuesta }) {
   return (
     <div className="propuesta">
-      <h3>Título: {propuesta.title}</h3>
-      <p>Descripción: {propuesta.description}</p>
-      <p>Profesor: {propuesta.profesor.name}</p>
-      <p>Subject: {propuesta.departamento}</p>
+      <h3>Título: {propuesta.titulo}</h3>
+      <p>Descripción: {propuesta.descripcion}</p>
+      <p>Profesor: {propuesta.profesor.nombre + " " +propuesta.profesor.apellidos}</p>
+      <p className="circle">{propuesta.departamento}</p>
     </div>
   );
 }

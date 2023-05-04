@@ -26,6 +26,7 @@ public class Adjudicacion {
     @DocumentReference(collection = "alumnos")
     private Alumno alumno;
 
+    //DELETE
     @DocumentReference(collection = "profesores")
     private Profesor profesor;
 

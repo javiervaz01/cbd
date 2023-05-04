@@ -14,12 +14,13 @@ body{
 }
 
 .content {
-  background-image: url('/public/background.png');
+  background-color: bisque;
   background-size: cover;
   background-position: center;
   flex-grow: 1;
   padding: 20px;
   width: auto;
+  overflow: auto;
   height: 100vh;
   top: 0;
   left: 0;

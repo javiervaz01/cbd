@@ -49,4 +49,9 @@ public class AdjudicacionController {
     public Adjudicacion updateAdjudicacion(@PathVariable ObjectId id, @RequestBody String estado) {
         return service.updateAdjudicacion(id, estado);
     }
+
+    @PostMapping("/adjudicaciones")
+    public Adjudicacion createAdjudicacion(@RequestBody Adjudicacion adjudicacion) {
+        return service.createAdjudicacion(adjudicacion);
+    }
 }
