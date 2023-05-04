@@ -1,15 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/home';
+import Sidebar from './components/Sidebar';
+
+
 
 function App() {
-  return (
-    <Routes>
-        <Route exact path="/" component={HomePage} />
 
-    </Routes>
+
+
+  return (
+    <div className="App">
+ 
+      <Sidebar></Sidebar>
+
+
+      <div className="content">
+        <div className="card">
+        <h1 className="title">CBD</h1>
+        <p className="subtitle">Proyecto de CBD de Francisco Javier Vázquez Monge</p>
+      </div>
+
+      </div>
+      
+
+    </div>
   );
 }
 
