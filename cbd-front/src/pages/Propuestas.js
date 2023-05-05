@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import "./Styles.css";
+import { Link } from 'react-router-dom';
 
 function Propuestas() {
     const [propuestas, setPropuestas] = useState([]);
@@ -42,12 +43,14 @@ function Propuestas() {
 
 function PropuestaComponent({ propuesta }) {
   return (
+    <Link to={`/propuestas/titulo/${propuesta.titulo}`}>
     <div className="propuesta">
       <h3>Título: {propuesta.titulo}</h3>
       <p>Descripción: {propuesta.descripcion}</p>
       <p>Profesor: {propuesta.profesor.nombre + " " +propuesta.profesor.apellidos}</p>
       <p className="circle">{propuesta.departamento}</p>
     </div>
+    </Link>
   );
 }
 

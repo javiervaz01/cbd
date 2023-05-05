@@ -9,6 +9,7 @@ import NotFound from './components/notFound/NotFound';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Adjudicaciones from './pages/Adjudicaciones';
+import PropuestaDetails from './pages/Propuesta';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,7 +23,8 @@ root.render(
           <Route path="/profesores*" element={<Profesores />} />
           <Route path="/alumnos*" element={<Alumnos />} />
           <Route path="/ayuda*" element={<NotFound />} />
-      </Routes>
+          <Route path="/propuestas/titulo/:titulo" component={<PropuestaDetails/>} />
+        </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
