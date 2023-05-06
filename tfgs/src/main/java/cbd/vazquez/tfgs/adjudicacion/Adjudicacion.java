@@ -10,6 +10,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "adjudicaciones")
 @Data
@@ -26,10 +27,7 @@ public class Adjudicacion {
     @DocumentReference(collection = "alumnos")
     private Alumno alumno;
 
-    //DELETE
-    //@DocumentReference(collection = "profesores")
-    //private Profesor profesor;
-
+    @Field("estado")
     private String estado;
 
     public Adjudicacion(Propuesta propuesta, Alumno alumno, String estado) {

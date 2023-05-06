@@ -3,6 +3,7 @@ import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import "./Styles.css";
 import { Link } from "react-router-dom";
+import NewAdjudicacionButton from "./CreateAdjudicacion";
 
 function Adjudicaciones() {
     const [adjudicaciones, setAdjudicaciones] = useState([]);
@@ -20,6 +21,7 @@ function Adjudicaciones() {
 
   return (
     <div className="app">
+      <NewAdjudicacionButton/>
       <div className="right">
                 <div className="titulo">
                     <h1>Adjudicaciones</h1>

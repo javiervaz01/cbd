@@ -20,7 +20,6 @@ public class AdjudicacionService {
 
     public Adjudicacion updateAdjudicacion(ObjectId id, String estado) {
         Adjudicacion adjudicacionToUpdate = repository.findById(id).orElse(null);
-        adjudicacionToUpdate.setEstado("");
         adjudicacionToUpdate.setEstado(estado);
         return repository.save(adjudicacionToUpdate);
     }
