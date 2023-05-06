@@ -330,5 +330,18 @@
     cursor: pointer;
     margin-top: 10px;
   }
+
+  .edit-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 30%;
+    background-color: rgb(255, 255, 255);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   

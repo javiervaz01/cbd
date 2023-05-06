@@ -15,32 +15,32 @@ public class AdjudicacionController {
     private AdjudicacionService service;
 
     @GetMapping("/adjudicaciones")
-    public List<Adjudicacion> allAdjudicaciones() {
+    public List<AdjudicacionDTO> allAdjudicaciones() {
         return service.getAllAdjudicaciones();
     }
 
     @GetMapping("/adjudicaciones/alumno/{alumno}")
-    public Adjudicacion getAdjudicacionByAlumno(@PathVariable ObjectId alumno) {
+    public AdjudicacionDTO getAdjudicacionByAlumno(@PathVariable ObjectId alumno) {
         return service.getAdjudicacionByAlumno(alumno);
     }
 
     @GetMapping("/adjudicaciones/profesor/{profesor}")
-    public List<Adjudicacion> getAdjudicacionByProfesor(@PathVariable ObjectId profesor) {
+    public List<AdjudicacionDTO> getAdjudicacionByProfesor(@PathVariable ObjectId profesor) {
         return service.getAdjudicacionByProfesor(profesor);
     }
 
     @GetMapping("/adjudicaciones/propuesta/{propuesta}")
-    public Adjudicacion getAdjudicacionByPropuesta(@PathVariable ObjectId propuesta) {
+    public AdjudicacionDTO getAdjudicacionByPropuesta(@PathVariable ObjectId propuesta) {
         return service.getAdjudicacionByPropuesta(propuesta);
     }
 
     @GetMapping("/adjudicaciones/estado/{estado}")
-    public List<Adjudicacion> getAdjudicacionByEstado(@PathVariable String estado) {
+    public List<AdjudicacionDTO> getAdjudicacionByEstado(@PathVariable String estado) {
         return service.getAdjudicacionByEstado(estado);
     }
 
     @GetMapping("/adjudicaciones/{id}")
-    public Adjudicacion getAdjudicacionById(@PathVariable ObjectId id) {
+    public AdjudicacionDTO getAdjudicacionById(@PathVariable ObjectId id) {
         return service.getAdjudicacionById(id);
     }
 

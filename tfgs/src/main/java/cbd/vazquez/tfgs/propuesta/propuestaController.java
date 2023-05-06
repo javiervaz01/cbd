@@ -21,23 +21,33 @@ public class propuestaController {
     private PropuestaService service;
 
     @GetMapping("/propuestas")
-    public List<Propuesta> allPropuestas() {
+    public List<PropuestaDTO> allPropuestas() {
         return service.getAllPropuestas();
     }
 
     @GetMapping("/propuestas/titulo/{titulo}")
-    public ResponseEntity<Optional<Propuesta>> getPropuestaByTitulo(@PathVariable String titulo) {
-        return new ResponseEntity<Optional<Propuesta>>(service.getPropuestaByTitulo(titulo), HttpStatus.OK);
+    public PropuestaDTO getPropuestaByTitulo(@PathVariable String titulo) {
+        return service.getPropuestaByTitulo(titulo);
+    }
+
+    @GetMapping("/propuestas/{id}")
+    public PropuestaDTO getPropuestaById(@PathVariable ObjectId id) {
+        return service.getPropuestaById(id);
+    }
+
+    @GetMapping("/pruebaId")
+    public String getPropuestaByTitulo() {
+        return service.getAllPropuestas().get(0).getId();
     }
 
     @GetMapping("/propuestas/profesor/{profesor}")
-    public ResponseEntity<Optional<List<Propuesta>>> getPropuestasByProfesor(@PathVariable ObjectId profesor) {
-        return new ResponseEntity<Optional<List<Propuesta>>>(service.getPropuestasByProfesor(profesor), HttpStatus.OK);
+    public List<PropuestaDTO> getPropuestasByProfesor(@PathVariable ObjectId profesor) {
+        return service.getPropuestasByProfesor(profesor);
     }
 
     @GetMapping("/propuestas/departamento/{departamento}")
-    public ResponseEntity<Optional<List<Propuesta>>> getPropuestasByDepartamento(@PathVariable DEPARTAMENTO departamento) {
-        return new ResponseEntity<Optional<List<Propuesta>>>(service.getPropuestasByDepartamento(departamento), HttpStatus.OK);
+    public List<PropuestaDTO> getPropuestasByDepartamento(@PathVariable DEPARTAMENTO departamento) {
+        return service.getPropuestasByDepartamento(departamento);
     }
 
     @PostMapping("/propuestas")

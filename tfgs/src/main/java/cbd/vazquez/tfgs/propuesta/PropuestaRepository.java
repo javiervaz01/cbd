@@ -14,6 +14,9 @@ public interface PropuestaRepository extends MongoRepository<Propuesta, ObjectId
     @Query("{'titulo': ?0}")
     Optional<Propuesta> findPropuestaByTitulo(String titulo);
 
+    @Query("{'id': ?0}")
+    Optional<Propuesta> findPropuestaById(ObjectId Id);
+
     @Query("{'profesor': ?0}")
     Optional<List<Propuesta>> findPropuestaByProfesor(ObjectId profesorId);
 

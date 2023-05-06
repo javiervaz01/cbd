@@ -1,10 +1,12 @@
 package cbd.vazquez.tfgs.adjudicacion;
 
+import cbd.vazquez.tfgs.propuesta.PropuestaDTO;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AdjudicacionService {
@@ -22,32 +24,38 @@ public class AdjudicacionService {
         return repository.save(adjudicacionToUpdate);
     }
 
-    public Adjudicacion getAdjudicacionByAlumno(ObjectId alumnoId) {
-        return repository.findAdjudicacionByAlumno(alumnoId).orElse(null);
+    public AdjudicacionDTO getAdjudicacionByAlumno(ObjectId alumnoId) {
+        Adjudicacion adjudicacion = repository.findAdjudicacionByAlumno(alumnoId).orElse(null);
+        return new AdjudicacionDTO(adjudicacion);
     }
 
-    public List<Adjudicacion> getAdjudicacionByProfesor(ObjectId profesorId) {
-        return repository.findAdjudicacionByProfesor(profesorId);
+    public List<AdjudicacionDTO> getAdjudicacionByProfesor(ObjectId profesorId) {
+        List<Adjudicacion> adjudicaciones = repository.findAdjudicacionByProfesor(profesorId);
+        return adjudicaciones.stream().map(adjudicacion -> new AdjudicacionDTO(adjudicacion)).collect(Collectors.toList());
     }
 
-    public Adjudicacion getAdjudicacionByPropuesta(ObjectId propuestaId) {
-        return repository.findAdjudicacionByPropuesta(propuestaId).orElse(null);
+    public AdjudicacionDTO getAdjudicacionByPropuesta(ObjectId propuestaId) {
+        Adjudicacion adjudicacion = repository.findAdjudicacionByPropuesta(propuestaId).orElse(null);
+        return new AdjudicacionDTO(adjudicacion);
     }
 
-    public List<Adjudicacion> getAdjudicacionByEstado(String estado) {
-        return repository.findAdjudicacionByEstado(estado);
+    public List<AdjudicacionDTO> getAdjudicacionByEstado(String estado) {
+        List<Adjudicacion> adjudicaciones = repository.findAdjudicacionByEstado(estado);
+        return adjudicaciones.stream().map(adjudicacion -> new AdjudicacionDTO(adjudicacion)).collect(Collectors.toList());
     }
 
     public void deleteAdjudicacion(ObjectId id) {
         repository.deleteById(id);
     }
 
-    public List<Adjudicacion> getAllAdjudicaciones() {
-        return repository.findAll();
+    public List<AdjudicacionDTO> getAllAdjudicaciones() {
+        List<Adjudicacion> adjudicaciones = repository.findAll();
+        return adjudicaciones.stream().map(adjudicacion -> new AdjudicacionDTO(adjudicacion)).collect(Collectors.toList());
     }
 
-    public Adjudicacion getAdjudicacionById(ObjectId id) {
-        return repository.findById(id).orElse(null);
+    public AdjudicacionDTO getAdjudicacionById(ObjectId id) {
+        Adjudicacion adjudicacion = repository.findById(id).orElse(null);
+        return new AdjudicacionDTO(adjudicacion);
     }
 
     public Adjudicacion createAdjudicacion(Adjudicacion adjudicacion) {

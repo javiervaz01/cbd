@@ -11,14 +11,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-@Document(collection = "adjudicaciones")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Adjudicacion {
+public class AdjudicacionDTO {
 
     @Id
-    private ObjectId id;
+    private String id;
 
     @DocumentReference(collection = "propuestas")
     private Propuesta propuesta;
@@ -26,17 +25,19 @@ public class Adjudicacion {
     @DocumentReference(collection = "alumnos")
     private Alumno alumno;
 
-    //DELETE
-    //@DocumentReference(collection = "profesores")
-    //private Profesor profesor;
-
     private String estado;
 
-    public Adjudicacion(Propuesta propuesta, Alumno alumno, String estado) {
+    public AdjudicacionDTO(Propuesta propuesta, Alumno alumno, String estado) {
         this.propuesta = propuesta;
         this.alumno = alumno;
-        //this.profesor = profesor;
         this.estado = estado;
+    }
+
+    public AdjudicacionDTO(Adjudicacion adjudicacion) {
+        this.id = adjudicacion.getId().toHexString();
+        this.propuesta = adjudicacion.getPropuesta();
+        this.alumno = adjudicacion.getAlumno();
+        this.estado = adjudicacion.getEstado();
     }
 
 

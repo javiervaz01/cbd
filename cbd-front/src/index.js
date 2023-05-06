@@ -23,7 +23,7 @@ root.render(
           <Route path="/profesores*" element={<Profesores />} />
           <Route path="/alumnos*" element={<Alumnos />} />
           <Route path="/ayuda*" element={<NotFound />} />
-          <Route path="/propuestas/titulo/:titulo" component={<PropuestaDetails/>} />
+          <Route path="/propuestas/:id" element={<PropuestaDetails/>} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>

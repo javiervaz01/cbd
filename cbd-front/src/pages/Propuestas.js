@@ -43,7 +43,7 @@ function Propuestas() {
 
 function PropuestaComponent({ propuesta }) {
   return (
-    <Link to={`/propuestas/titulo/${propuesta.titulo}`}>
+    <Link to={`/propuestas/${propuesta.id}`}>
     <div className="propuesta">
       <h3>Título: {propuesta.titulo}</h3>
       <p>Descripción: {propuesta.descripcion}</p>

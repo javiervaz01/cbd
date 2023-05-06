@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PropuestaService {
@@ -13,20 +14,29 @@ public class PropuestaService {
     @Autowired
     private PropuestaRepository repository;
 
-    public List<Propuesta> getAllPropuestas() {
-        return repository.findAll();
+    public List<PropuestaDTO> getAllPropuestas() {
+        List<Propuesta> propuestas = repository.findAll();
+        return propuestas.stream().map(propuesta -> new PropuestaDTO(propuesta)).collect(Collectors.toList());
     }
 
-    public Optional<Propuesta> getPropuestaByTitulo(String titulo) {
-        return repository.findPropuestaByTitulo(titulo);
+    public PropuestaDTO getPropuestaByTitulo(String titulo) {
+        Propuesta propuesta = repository.findPropuestaByTitulo(titulo).get();
+        return new PropuestaDTO(propuesta);
     }
 
-    public Optional<List<Propuesta>> getPropuestasByProfesor(ObjectId profesor) {
-        return repository.findPropuestaByProfesor(profesor);
+    public PropuestaDTO getPropuestaById(ObjectId id) {
+        Propuesta propuesta = repository.findPropuestaById(id).get();
+        return new PropuestaDTO(propuesta);
     }
 
-    public Optional<List<Propuesta>> getPropuestasByDepartamento(DEPARTAMENTO departamento) {
-        return repository.findPropuestaByDepartamento(departamento);
+    public List<PropuestaDTO> getPropuestasByProfesor(ObjectId profesor) {
+        Optional<List<Propuesta>> propuestas = repository.findPropuestaByProfesor(profesor);
+        return propuestas.get().stream().map(propuesta -> new PropuestaDTO(propuesta)).collect(Collectors.toList());
+    }
+
+    public List<PropuestaDTO> getPropuestasByDepartamento(DEPARTAMENTO departamento) {
+        Optional<List<Propuesta>> propuestas = repository.findPropuestaByDepartamento(departamento);
+        return propuestas.get().stream().map(propuesta -> new PropuestaDTO(propuesta)).collect(Collectors.toList());
     }
 
     public void createPropuesta(Propuesta propuesta) {

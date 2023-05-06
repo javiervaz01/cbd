@@ -29,6 +29,21 @@ function PropuestaDetails() {
         setShowEditForm(true);
       };
 
+        const upload = () => {
+            axios.put(`http://localhost:8080/propuestas/${id}`, {
+                titulo: titulo,
+                descripcion: descripcion,
+            })
+                .then(response => {
+                    console.log('Propuesta actualizada correctamente');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+                setShowEditForm(false);
+
+        };
+
           const {
         titulo,
         descripcion,
@@ -63,7 +78,7 @@ function PropuestaDetails() {
 <div className="app">
         <div className="right">
                     <div className="titulo">
-                        <h1>{propuesta.titulo}</h1>
+                        <h1>Propuesta</h1>
                     </div>
                     <Sidebar />
 
@@ -76,7 +91,7 @@ function PropuestaDetails() {
         <div className="propuesta-card">
           <h2>{propuesta.titulo}</h2>
           <p>{propuesta.descripcion}</p>
-          <p>Profesor: {propuesta.profesor.nombre} + " " + {propuesta.profesor.apellidos}</p>
+          <p>Profesor: {propuesta.profesor.nombre} {propuesta.profesor.apellidos}</p>
           <p>Departamento: {propuesta.departamento}</p>
           <div className="propuesta-card-actions">
             <button className="btn btn-primary" onClick={handleEdit}>Edit</button>
@@ -104,7 +119,7 @@ function PropuestaDetails() {
                 onChange={handleDescripcionChange}
               />
             </label>
-            <button type="submit">Save</button>
+            <button type="submit" onClick={upload}>Save</button>
           </form>
         </div>
       )}
