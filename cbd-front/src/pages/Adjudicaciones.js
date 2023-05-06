@@ -49,7 +49,7 @@ function AdjudicacionComponent({ adjudicacion }) {
       <p>Descripción: {adjudicacion.propuesta.descripcion}</p>
       <p>Profesor: {adjudicacion.propuesta.profesor.nombre + " " +adjudicacion.propuesta.profesor.apellidos}</p>
       <p>Alumno: {adjudicacion.alumno.nombre + " " +adjudicacion.alumno.apellidos}</p>
-      <p>Estado: {adjudicacion.estado}</p>
+      <p>Estado: {JSON.parse(adjudicacion.estado).estado}</p>
       <p className="circle">{adjudicacion.propuesta.departamento}</p>
     </div>
     </Link>

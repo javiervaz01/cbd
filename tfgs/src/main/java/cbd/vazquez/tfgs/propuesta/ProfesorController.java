@@ -25,8 +25,16 @@ public class ProfesorController {
     }
 
     @GetMapping("/profesores/nombre/{nombre}")
-    public Optional<Profesor> getProfesorByNombre(@PathVariable String nombre){
-        return repository.findProfesorByNombre(nombre);
+    public ProfesorDTO getProfesorByNombre(@PathVariable String nombre){
+
+        Profesor profesor = repository.findProfesorByNombre(nombre).get();
+        return new ProfesorDTO(profesor);
+    }
+
+    @GetMapping("/profesores/nombre/{nombre}/id")
+    public String getProfesorIdByNombre(@PathVariable String nombre){
+        Profesor profesor = repository.findProfesorByNombre(nombre).get();
+        return profesor.getId().toHexString();
     }
 
     @GetMapping("/profesores/departamento/{departamento}")

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from "../components/Sidebar";
 import "./Styles.css";
+import { useNavigate } from 'react-router-dom';
 
 function AdjudicacionDetails() {
     const { id } = useParams();
@@ -10,7 +11,7 @@ function AdjudicacionDetails() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showEditForm, setShowEditForm] = useState(false);
-
+    const navigate = useNavigate();
     
 
     // Add useEffect hook to load the adjudicacion data
@@ -37,6 +38,8 @@ function AdjudicacionDetails() {
             })
                 .then(response => {
                     console.log('Estado de la adjudicación actualizada correctamente');
+                    navigate('/adjudicaciones', { replace: true });
+
                 })
                 .catch(error => {
                     console.error(error);
@@ -57,8 +60,7 @@ function AdjudicacionDetails() {
             axios.delete(`http://localhost:8080/adjudicaciones/${id}`)
                 .then(response => {
                     console.log('Adjudicacion eliminada correctamente');
-                    window.location.replace('/adjudicaciones');
-                    // TODO: redirect to the previous page or show a message
+                    navigate('/adjudicaciones', { replace: true });
                 })
                 .catch(error => {
                     console.error(error);
@@ -93,7 +95,7 @@ function AdjudicacionDetails() {
           <p>{adjudicacion.propuesta.descripcion}</p>
           <p>Profesor: {adjudicacion.propuesta.profesor.nombre} {adjudicacion.propuesta.profesor.apellidos}</p>
           <p>Departamento: {adjudicacion.propuesta.departamento}</p>
-          <p>Estado: {adjudicacion.estado}</p>
+          <p>Estado: {JSON.parse(adjudicacion.estado).estado}</p>
 
           <div className="propuesta-card-actions">
             <button className="btn btn-primary" onClick={handleEdit}>Edit</button>

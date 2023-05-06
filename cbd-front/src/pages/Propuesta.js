@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from "../components/Sidebar";
 import "./Styles.css";
+import { useNavigate } from 'react-router-dom';
 
 function PropuestaDetails() {
     const { id } = useParams();
@@ -10,6 +11,7 @@ function PropuestaDetails() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showEditForm, setShowEditForm] = useState(false);
+    const navigate = useNavigate();
 
     // Add useEffect hook to load the propuesta data
     useEffect(() => {
@@ -36,6 +38,7 @@ function PropuestaDetails() {
             })
                 .then(response => {
                     console.log('Propuesta actualizada correctamente');
+                    navigate('/propuestas', { replace: true });
                 })
                 .catch(error => {
                     console.error(error);
@@ -58,8 +61,7 @@ function PropuestaDetails() {
             axios.delete(`http://localhost:8080/propuestas/${id}`)
                 .then(response => {
                     console.log('Propuesta eliminada correctamente');
-                    window.location.replace('/propuestas');
-                    // TODO: redirect to the previous page or show a message
+                    navigate('/propuestas', { replace: true });
                 })
                 .catch(error => {
                     console.error(error);

@@ -3,6 +3,7 @@ import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import "./Styles.css";
 import { Link } from 'react-router-dom';
+import NewPropuestaButton from "./CreatePropuesta";
 
 function Propuestas() {
     const [propuestas, setPropuestas] = useState([]);
@@ -20,6 +21,7 @@ function Propuestas() {
 
   return (
     <div className="app">
+      <NewPropuestaButton/>
       <div className="right">
                 <div className="titulo">
                     <h1>Propuestas</h1>

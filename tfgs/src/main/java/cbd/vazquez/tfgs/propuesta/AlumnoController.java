@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -16,8 +17,9 @@ public class AlumnoController {
     private AlumnoRepository repository;
 
     @GetMapping("/alumnos")
-    public List<Alumno> alAlumnos() {
-        return repository.findAll();
+    public List<AlumnoDTO> alAlumnos() {
+        List<Alumno> alumnos = repository.findAll();
+        return alumnos.stream().map(alumno -> new AlumnoDTO(alumno)).collect(Collectors.toList());
     }
 
     @GetMapping("alumnos/{id}")
