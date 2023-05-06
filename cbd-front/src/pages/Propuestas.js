@@ -32,12 +32,13 @@ function Propuestas() {
             </div>
 
       <div className="content">
-        
+        <div className="provisional"></div>
         <div className="propuesta">
           {propuestas.map((propuesta) => (
             <PropuestaComponent key={propuesta.titulo} propuesta={propuesta} />
           ))}
         </div>
+        
       </div>
     </div>
   );

@@ -88,7 +88,7 @@ function PropuestaDetails() {
                     
                 </div>
 
-        <div className="content">
+        <div className="single-content">
             
         <div className="propuesta-details">
         <div className="propuesta-card">

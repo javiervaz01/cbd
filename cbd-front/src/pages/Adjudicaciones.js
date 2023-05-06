@@ -32,8 +32,8 @@ function Adjudicaciones() {
             </div>
 
       <div className="content">
-        
-        <div className="Adjudicacion">
+        <div className="provisional"></div>
+        <div className="adjudicacion">
           {adjudicaciones.map((adjudicacion) => (
             <AdjudicacionComponent key={adjudicacion.propuesta.titulo} adjudicacion={adjudicacion} />
           ))}

@@ -13,7 +13,7 @@ function App() {
       <Sidebar></Sidebar>
 
 
-      <div className="content">
+      <div className="HomeContent">
         <div className="card">
         <h1 className="title">CBD</h1>
         <p className="subtitle">Proyecto de CBD de Francisco Javier Vázquez Monge</p>

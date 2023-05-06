@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -15,8 +17,9 @@ public class ProfesorController {
     private ProfesorRepository repository;
 
     @GetMapping("/profesores")
-    public Iterable<Profesor> allProfesores() {
-        return repository.findAll();
+    public List<ProfesorDTO> allProfesores() {
+        List<Profesor> profesores = repository.findAll();
+        return profesores.stream().map(profesor -> new ProfesorDTO(profesor)).collect(Collectors.toList());
     }
 
     @GetMapping("/profesores/{id}")
