@@ -10,6 +10,7 @@ import NotFound from './components/notFound/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Adjudicaciones from './pages/Adjudicaciones';
 import PropuestaDetails from './pages/Propuesta';
+import AdjudicacionDetails from './pages/Adjudicacion';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +25,7 @@ root.render(
           <Route path="/alumnos*" element={<Alumnos />} />
           <Route path="/ayuda*" element={<NotFound />} />
           <Route path="/propuestas/:id" element={<PropuestaDetails/>} />
+          <Route path="/adjudicaciones/:id" element={<AdjudicacionDetails/>} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>

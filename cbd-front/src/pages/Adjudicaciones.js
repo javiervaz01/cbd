@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import "./Styles.css";
+import { Link } from "react-router-dom";
 
 function Adjudicaciones() {
     const [adjudicaciones, setAdjudicaciones] = useState([]);
@@ -42,6 +43,7 @@ function Adjudicaciones() {
 
 function AdjudicacionComponent({ adjudicacion }) {
   return (
+    <Link to={`/adjudicaciones/${adjudicacion.id}`}>
     <div className="adjudicacion">
       <h3>Título: {adjudicacion.propuesta.titulo}</h3>
       <p>Descripción: {adjudicacion.propuesta.descripcion}</p>
@@ -49,9 +51,8 @@ function AdjudicacionComponent({ adjudicacion }) {
       <p>Alumno: {adjudicacion.alumno.nombre + " " +adjudicacion.alumno.apellidos}</p>
       <p>Estado: {adjudicacion.estado}</p>
       <p className="circle">{adjudicacion.propuesta.departamento}</p>
-
-
     </div>
+    </Link>
   );
 }
 
