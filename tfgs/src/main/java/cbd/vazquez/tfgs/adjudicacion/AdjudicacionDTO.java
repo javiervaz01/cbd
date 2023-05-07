@@ -32,14 +32,10 @@ public class AdjudicacionDTO {
         this.alumno = alumno;
         this.estado = estado;
     }
-
     public AdjudicacionDTO(Adjudicacion adjudicacion) {
         this.id = adjudicacion.getId().toHexString();
         this.propuesta = adjudicacion.getPropuesta();
         this.alumno = adjudicacion.getAlumno();
         this.estado = adjudicacion.getEstado();
     }
-
-
-
 }
